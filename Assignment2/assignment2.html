@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+    
+  </head>
+  <body>
+      <svg style="height: 600px; width: 600px"></svg>
+    <script>
+        d3.csv("numberdata.csv", data => scatterplot(data));
+
+        function scatterplot(incomingData){
+            // console.log(incomingData);
+
+            var minmaxYear = d3.extent(incomingData, d => parseInt(d.year));
+            var minmaxPer = d3.extent(incomingData, d => parseFloat(d.percent));
+            
+            // console.log(minmaxPer);
+            // console.log(minmaxYear);
+
+            var xScale = d3.scaleLinear().domain(minmaxYear).range([0,500]);
+            var yScale = d3.scaleLinear().domain(minmaxPer).range([0,500]);
+
+            var yAxis = d3.axisRight()
+            .scale(yScale)
+            .ticks(5)
+            .tickSize(500);
+
+            d3.selectAll("svg")
+            .append("g")
+                .attr("transform", "translate(10,10)")
+            .call(yAxis);
+
+            var xAxis = d3.axisBottom()
+            .scale(xScale)
+            .tickSize(500)
+            .tickValues([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009]);
+
+            d3.selectAll("svg")
+            .append("g")
+                .attr("transform", "translate(10,10)")
+            .call(xAxis);
+
+            d3.select("svg")
+            .selectAll("circle")
+            .data(incomingData)
+            .enter()
+            .append("circle")
+            .attr("r", "5px")
+            .attr("cx", d => xScale(d.year) + 10)
+            .attr("cy", d => yScale(d.percent) + 10)
+            .style("fill", "rgb(0,244,0)")
+            .on("click", circleClick);
+
+            function circleClick(data){
+                // console.log(data);
+
+                d3.selectAll("circle")
+                .attr("r", "5px");
+
+                d3.select(this)
+                .attr("r", d => parseFloat(d.percent) * 100);
+                
+            }
+
+            d3.select("svg").selectAll("circle")
+                .on("mouseover", mOver);
+
+            d3.select("svg").selectAll("circle")
+                .on("mouseout", mOut);
+            
+
+            function mOver(data){
+                // console.log(data, "mouseover");
+                d3.select(this).style("fill", "blue");
+            }
+
+            function mOut(data){
+                // console.log(data, "mouseout");
+                d3.select(this).style("fill", "rgb(0,244,0)");
+            }
+
+        }
+	
+    </script>
+  </body>
+</html>

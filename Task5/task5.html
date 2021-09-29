@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+    
+  </head>
+  <body>
+      <svg style="height: 500px; width: 1000px;"></svg>
+    <script>
+        d3.json("footballsalary.json", viz);
+
+        function viz(data){
+            // console.log(data.teams);
+            var depthScale = d3.scaleOrdinal().range(["blue", "rgb(0,244,0)", "purple", "yellow"]);
+            
+            var radiusScale = d3.scaleLinear().domain([7800000, 18200000]).range([10, 20]);
+
+            var nestedTeams = d3.nest()
+                .key(d => d.team)
+                .entries(data.teams);
+
+            var packableTeams = {id: "All Teams", values: nestedTeams};
+            var root = d3.hierarchy(packableTeams, d => d.values).sum(d => radiusScale(d.salary));
+
+            var packChart = d3.pack().padding(5).size([500,500]);
+
+            d3.select("svg")
+                .append("g")
+                    .attr("transform", "translate(100,20)")
+                .selectAll("circle")
+                .data(packChart(root).descendants())
+                .enter()
+                .append("circle")
+                    .attr("r", d => d.r)
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y)
+                    .style("fill", d => depthScale(d.depth));
+        };
+	
+    </script>
+  </body>
+</html>

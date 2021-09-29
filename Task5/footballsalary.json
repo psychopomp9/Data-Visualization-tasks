@@ -1,0 +1,17 @@
+{
+"teams": [
+{"team": "Manchester United", "player": "Alexis Sanchez", "salary": "18200000"},
+{"team": "Manchester United", "player": "Paul Pogpa", "salary": "15080000"},
+{"team": "Manchester United", "player": "David De Gea", "salary": "10400000"},
+{"team": "Liverpool", "player": "Mohamed Salah", "salary": "10400000"},
+{"team": "Liverpool", "player": "Roberto Firmino", "salary": "9360000"},
+{"team": "Liverpool", "player": "Virgil Van Dijk", "salary": "7800000"},
+{"team": "Chelsea", "player": "Eden Hazard", "salary": "10400000"},
+{"team": "Chelsea", "player": "Kepa Arrizabalaga", "salary": "9984000"},
+{"team": "Chelsea", "player": "Cesc Fabregas", "salary": "8112000"},
+{"team": "Arsenal", "player": "Mesut Ozil", "salary": "18200000"},
+{"team": "Arsenal", "player": "Pierre-Emerick Aubameyang", "salary": "10400000"},
+{"team": "Arsenal", "player": "Henrikh Mkhitaryan", "salary": "9360000"}
+]
+}
+

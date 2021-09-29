@@ -1,0 +1,36 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+    
+  </head>
+  <body>
+      <svg style="width: 1000px; height: 500px;"></svg>
+    <script>
+        d3.json("androiddata.json", data => dataViz(data));
+        
+        function dataViz(data){
+            var maxMarketShare = d3.max(data, d => d.marketshare);    
+            // console.log(marketshare);
+            var minMaxVal = d3.extent(data, d => d.marketshare);
+            // console.log(minMaxVal);
+            var linScale = d3.scaleLinear().domain(minMaxVal).range([0,500]);
+
+            d3.select("svg")
+            .selectAll("rec")
+            .data(data)
+            .enter()
+            .append("rect")
+                .attr("width", 60)
+                .attr("height", d => linScale(d.marketshare))
+                .attr("x", (d,i) => i * 70)
+                .attr("y", d => 500 - linScale(d.marketshare))
+                .style("fill", "rgb(0,244,0)")
+                .style("stroke", "black")
+                .style("stroke-width", "1px");
+        }
+
+	
+    </script>
+  </body>
+</html>

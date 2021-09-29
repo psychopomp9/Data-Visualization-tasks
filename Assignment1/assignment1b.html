@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+    
+  </head>
+  <body>
+    <svg style="height: 500px; width: 1000px;"></svg>
+    <script>
+        d3.json("people.json", data => dataViz(data.people));
+	
+        function dataViz(incomingData){
+            incomingData.forEach(d => {
+                d.numchildren = d.children.length;
+                d.birth = new Date(d.birthday);
+            });
+
+            var maxChildren = d3.max(incomingData, d => d.numchildren);
+            var startEnd = d3.extent(incomingData, d => d.birth);
+            var timeRamp = d3.scaleTime().domain(startEnd).range([50,450]);
+            var yScale = d3.scaleLinear().domain([0,maxChildren]).range([0,460]);
+            var radiusScale = d3.scaleLinear().domain([0,maxChildren]).range([1,20]);
+
+            d3.select("svg")
+            .selectAll("circle")
+            .data(incomingData)
+            .enter()
+            .append("circle")
+            .attr("r", d => radiusScale(d.numchildren))
+            .attr("cx", d => timeRamp(d.birth))
+            .attr("cy", d => 480 - yScale(d.numchildren))
+            .style("fill", "rgb(0,244,0")
+            .style("stroke", "black")
+            .style("stroke-width", "2px");
+        }
+    </script>
+  </body>
+</html>

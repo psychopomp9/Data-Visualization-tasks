@@ -1,0 +1,38 @@
+[
+  {
+    "system": "7.0 Nougat",
+    "marketshare": 38.45
+  },
+  {
+    "system": "6.0 Marshmallow",
+    "marketshare": 18.38
+  },
+  {
+    "system": "5.1 Lollipop",
+    "marketshare": 7.25
+  },
+  {
+    "system": "4.4 KitKat",
+    "marketshare": 6.02
+  },
+  {
+    "system": "5.0 Lollipop",
+    "marketshare": 4.86
+  },
+  {
+    "system": "7.1 Nougat",
+    "marketshare": 8.43
+  },
+  {
+    "system": "8.0 Oreo",
+    "marketshare": 10.42
+  },
+  {
+    "system": "8.1 Oreo",
+    "marketshare": 3.97
+  },
+  {
+    "system": "4.2 Jelly Bean",
+    "marketshare": 0.99
+  }
+]

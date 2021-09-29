@@ -1,0 +1,19 @@
+{
+"gandhi": [
+{"parent": "Harilal", "name": "Rani"},
+{"parent": "Harilal", "name": "Manu"},
+{"parent": "Harilal", "name": "Kantilal"},
+{"parent": "Harilal", "name": "Rasikal"},
+{"parent": "Harilal", "name": "Shanitilal"},
+{"parent": "Ramdas", "name": "Kanu"},
+{"parent": "Ramdas", "name": "Sumitra"},
+{"parent": "Ramdas", "name": "Usha"},
+{"parent": "Devdas", "name": "Rajmohan"},
+{"parent": "Devdas", "name": "Ramchandra"},
+{"parent": "Devdas", "name": "Gopalkrishna"},
+{"parent": "Devdas", "name": "Tara"},
+{"parent": "Manilal", "name": "Arun"},
+{"parent": "Manilal", "name": "Ela"},
+{"parent": "Manilal", "name": "Sita"}
+]
+}

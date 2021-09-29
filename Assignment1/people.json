@@ -1,0 +1,9 @@
+{
+"people": [
+{"name": "Al", "birthday": "Dec 23 1995", "children": ["Emma"]},
+{"name": "Obama", "birthday": "Aug 04 1961", "children": ["Malia", "Sasha"]},
+{"name": "Janet", "birthday": "Oct 19 1987", "children": ["Luci", "Jake", "John", "Mike"]},
+{"name": "Ram", "birthday": "Jan 03 1992", "children": ["Prashant", "Swati"]}
+]
+}
+
